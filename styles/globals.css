@@ -492,12 +492,14 @@ span.text-red {
   width: 200px;
   transform: scale(1, 1);
   transition: transform 0.5s ease;
+  user-select: none;
 }
 .buttons .add-to-cart:hover {
   transform: scale(1.1, 1.1);
 }
 .buttons .buy-now {
   width: 200px;
+  user-select: none;
 
   padding: 10px 20px;
   background-color: #f02d34;
@@ -529,6 +531,7 @@ span.text-red {
 .quantity-desc .num {
   border-right: 1px solid gray;
   font-size: 20px;
+  user-select: none;
 }
 .quantity-desc .plus {
   color: rgb(49, 168, 49);
@@ -541,6 +544,7 @@ span.text-red {
   text-align: center;
   margin: 50px;
   color: #324d67;
+  user-select: none;
 
   font-size: 28px;
 }
