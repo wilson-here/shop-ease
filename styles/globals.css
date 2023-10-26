@@ -246,6 +246,7 @@ span.text-red {
   left: 8%; */
   top: -25%;
   left: 25%;
+  object-fit: contain;
 }
 .banner-desc .right {
   line-height: 1.4;
@@ -330,7 +331,7 @@ span.text-red {
 .product-container {
   margin-top: 15px;
   overflow: auto;
-  max-height: 70vh;
+  max-height: 60vh;
   padding: 20px 10px;
 }
 .product {
@@ -621,6 +622,7 @@ span.text-red {
     height: 62%;
     top: -2%;
     right: -6%;
+    object-fit: contain;
   }
   .footer-banner-container {
     height: 560px;

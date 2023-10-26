@@ -14,10 +14,18 @@ import { useStateContext } from "../../context/StateContext";
 const ProductDetails = ({ product, products }) => {
   const { image, name, details, price, _id } = product;
   const [index, setIndex] = useState(0); // track image đang được hover lên
-  const { decQty, incQty, qty, setQty, onAdd } = useStateContext();
+  const { decQty, incQty, qty, setQty, onAdd, setShowCart } = useStateContext();
+  // reset qty and image index
   useEffect(() => {
     setQty(1);
+    setIndex(0);
   }, [_id]);
+
+  const handleBuyNow = () => {
+    onAdd(product, qty);
+    setShowCart(true);
+  };
+
   return (
     <div>
       <div className="product-detail-container">
@@ -82,7 +90,7 @@ const ProductDetails = ({ product, products }) => {
             >
               Add to Cart
             </button>
-            <button type="button" className="buy-now" onClick="">
+            <button type="button" className="buy-now" onClick={handleBuyNow}>
               Buy Now
             </button>
           </div>
@@ -120,6 +128,7 @@ export const getStaticPaths = async () => {
   };
 };
 
+// next js auto detect the slug we're on a specific product page and return the slug param below to pass in the getStaticsProps function
 export const getStaticProps = async ({ params: { slug } }) => {
   const query = `*[_type == "product" && slug.current == '${slug}'][0]`;
   const productsQuery = `*[_type == "product"]`;
