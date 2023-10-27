@@ -10,11 +10,53 @@ import { client, urlFor } from "../../lib/client";
 
 import { Product } from "../../components";
 import { useStateContext } from "../../context/StateContext";
+import Slider from "react-slick";
 
 const ProductDetails = ({ product, products }) => {
   const { image, name, details, price, _id } = product;
   const [index, setIndex] = useState(0); // track image đang được hover lên
   const { decQty, incQty, qty, setQty, onAdd, setShowCart } = useStateContext();
+
+  var settings = {
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          arrows: false,
+        },
+      },
+      {
+        breakpoint: 640,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 375,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
   // reset qty and image index
   useEffect(() => {
     setQty(1);
@@ -29,12 +71,12 @@ const ProductDetails = ({ product, products }) => {
   return (
     <div>
       <div className="product-detail-container">
-        <div>
+        <div className="shrink-0">
           <div className="image-container">
             {image[index] && (
               <img
                 src={urlFor(image[index])}
-                className="product-detail-image"
+                className="product-detail-image object-cover"
               />
             )}
           </div>
@@ -98,13 +140,11 @@ const ProductDetails = ({ product, products }) => {
       </div>
       <div className="maylike-products-wrapper">
         <h2>You may also like</h2>
-        <div className="marquee">
-          <div className="maylike-products-container track">
-            {products.map((item) => (
-              <Product key={item._id} product={item} />
-            ))}
-          </div>
-        </div>
+        <Slider className="-mx-2" {...settings}>
+          {products.map((item) => (
+            <Product key={item._id} product={item} />
+          ))}
+        </Slider>
       </div>
     </div>
   );
