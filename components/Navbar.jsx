@@ -7,10 +7,10 @@ import { useStateContext } from "../context/StateContext";
 const Navbar = () => {
   const { showCart, setShowCart, totalQuantities } = useStateContext();
   return (
-    <div className="navbar-container items-center pr-4 shadow-md">
+    <div className="flex justify-between relative items-center pr-4 shadow-md">
       <p className="logo">
-        <Link href="/" fontSize={0}>
-          <img src="../logo.png" className="w-60 p-4 rounded-lg" />
+        <Link href="/" className="">
+          <img src="../logo.png" className="w-48 p-4" />
         </Link>
       </p>
       <button

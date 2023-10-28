@@ -11,10 +11,15 @@ const Layout = ({ children }) => {
         <title>SHOP EASE | shopping made easy!</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <header className="fixed top-0 z-10 w-full bg-white">
+      <header id="header" className="fixed top-0 z-10 w-full bg-white">
         <Navbar />
       </header>
-      <main className="main-container">{children}</main>
+      <main
+        id="main"
+        className="main-container mx-auto p-6 w-full mt-16 md:p-10"
+      >
+        {children}
+      </main>
       <footer>
         <Footer />
       </footer>

@@ -17,6 +17,15 @@ const ProductDetails = ({ product, products }) => {
   const [index, setIndex] = useState(0); // track image đang được hover lên
   const { decQty, incQty, qty, setQty, onAdd, setShowCart } = useStateContext();
 
+  var settingsSm = {
+    infinite: false,
+    variableWidth: true,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    pauseOnHover: true,
+  };
+
   var settings = {
     speed: 500,
     slidesToShow: 5,
@@ -26,9 +35,16 @@ const ProductDetails = ({ product, products }) => {
     initialSlide: 0,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 375,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 640,
+        settings: {
+          slidesToShow: 2,
           slidesToScroll: 1,
         },
       },
@@ -41,16 +57,9 @@ const ProductDetails = ({ product, products }) => {
         },
       },
       {
-        breakpoint: 640,
+        breakpoint: 1024,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 375,
-        settings: {
-          slidesToShow: 1,
+          slidesToShow: 4,
           slidesToScroll: 1,
         },
       },
@@ -71,31 +80,33 @@ const ProductDetails = ({ product, products }) => {
   return (
     <div>
       <div className="product-detail-container">
-        <div className="shrink-0">
+        <div className="">
           <div className="image-container">
             {image[index] && (
               <img
                 src={urlFor(image[index])}
-                className="product-detail-image object-cover"
+                className="product-detail-image object-cover bg-[#ebebeb] rounded-lg cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#f02d34] w-full"
               />
             )}
           </div>
-          <div className="small-images-container">
+          <Slider className="slider-small -mx-1" {...settingsSm}>
             {image?.map((item, i) => (
-              <img
-                key={i}
-                src={urlFor(item)}
-                onMouseEnter={() => {
-                  setIndex(i);
-                }}
-                className={
-                  i === index // nếu image của hình trong vòng loop = index của image đang được hover -> active image đó
-                    ? "small-image selected-image"
-                    : "small-image"
-                }
-              />
+              <div>
+                <img
+                  key={i}
+                  src={urlFor(item)}
+                  onMouseEnter={() => {
+                    setIndex(i);
+                  }}
+                  className={
+                    i === index // nếu image của hình trong vòng loop = index của image đang được hover -> active image đó
+                      ? "small-image selected-image"
+                      : "small-image"
+                  }
+                />
+              </div>
             ))}
-          </div>
+          </Slider>
         </div>
         <div className="product-detail-desc">
           <h1>{name}</h1>

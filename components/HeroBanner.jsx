@@ -4,29 +4,44 @@ import { urlFor } from "../lib/client";
 
 const HeroBanner = ({ heroBanner }) => {
   return (
-    <div className="hero-banner-container">
-      <div>
-        <p className="beats-solo">{heroBanner.smallText}</p>
-        <h3 className="font-black">{heroBanner.midText}</h3>
-        <h3 className="font-black">{heroBanner.largeText1}</h3>
+    <div
+      className="hero-banner-container p-6 flex flex-col flex-col-reverse md:flex-row md:items-center md:justify-between md:p-10 md:relative md:bg-transparent md:min-h-[450px] before:content-[''] before:inset-0 before:w-full before:h-full before:bg-[#ebebeb] before:absolute before:-z-20 before:rounded-2xl"
+      style={{ color: "#324d67" }}
+    >
+      {/* desc */}
+      <div className="mt-8">
+        <p className="text-sm md:text-base lg:text-lg xl:text-2xl">
+          {heroBanner.smallText}
+        </p>
+        <h3 className="font-black text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
+          {heroBanner.midText}
+        </h3>
+        <h3 className="font-black text-3xl text-white drop-shadow-xl md:text-6xl lg:text-8xl xl:text-9xl">
+          {heroBanner.largeText1}
+        </h3>
+        <Link href={`/product/${heroBanner.slug.current}`}>
+          <button
+            type="button"
+            className="mt-4 py-2 px-4 rounded-2xl font-medium border-none cursor-pointer text-white uppercase text-sm  lg:transition-transform lg:hover:scale-110 lg:ease-in-out lg:duration-300 md:text-base lg:text-lg"
+          >
+            {heroBanner.buttonText}
+          </button>
+        </Link>
+      </div>
+      {/* image */}
+      <div className="md:self-end">
         <img
           src={urlFor(heroBanner.image)}
           alt="headphones"
-          className="hero-banner-image object-cover"
+          className="object-contain m-auto w-full -top-14 max-w-[300px] md:m-[unset] md:absolute md:-z-10 md:left-[unset] md:right-20 md:-top-2 md:max-w-[450px] lg:md:max-w-[600px] xl:-top-20"
         />
-        <div>
-          <Link href={`/product/${heroBanner.slug.current}`}>
-            <button
-              type="button"
-              className="uppercase transition-transform hover:scale-110 ease-in-out duration-300"
-            >
-              {heroBanner.buttonText}
-            </button>
-          </Link>
-          <div className="desc">
-            <h5>Description</h5>
-            <p>{heroBanner.desc}</p>
-          </div>
+        <div className="desc">
+          <h5 className="text-sm text-[#324d67] self-end font-bold drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)] md:text-base lg:text-lg xl:text-2xl ">
+            Description
+          </h5>
+          <p className="text-sm md:text-base md:drop-shadow-2xl lg:text-lg xl:text-xl">
+            {heroBanner.desc}
+          </p>
         </div>
       </div>
     </div>

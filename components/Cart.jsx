@@ -37,8 +37,11 @@ const Cart = () => {
     stripe.redirectToCheckout({ sessionId: data.id });
   };
   return (
-    <div className="cart-wrapper" ref={cartRef}>
-      <div className="cart-container">
+    <div
+      className="fixed w-full bg-[#00000080] right-0 top-0 z-50 h-full "
+      ref={cartRef}
+    >
+      <div className="h-full bg-white p-4 max-w-[300px] w-4/5 transition-all duration-1000 ease-in-out ml-auto relative">
         <button
           type="button"
           className="cart-heading"
@@ -50,13 +53,13 @@ const Cart = () => {
         </button>
         {cartItems.length < 1 && (
           <div className="empty-cart">
-            <AiOutlineShopping size={150} />
-            <h3>Your shopping bag is empty</h3>
-            <Link href="/">
+            <AiOutlineShopping size={100} className="m-auto text-gray-400" />
+            <h3 className="text-gray-400">Your shopping bag is empty</h3>
+            <Link href="/" className="absolute bottom-4 inset-x-0">
               <button
                 type="button"
                 onClick={() => setShowCart(false)}
-                className="btn"
+                className="p-4 rounded-2xl border-none text-lg uppercase bg-[#f02d34] text-white cursor-pointer lg:transition-transform lg:hover:scale-110 lg:ease-in-out lg:duration-300"
               >
                 Continue shopping
               </button>
