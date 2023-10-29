@@ -8,17 +8,21 @@ const Home = ({ products, bannerData }) => {
   return (
     <div>
       <HeroBanner heroBanner={bannerData.length && bannerData[0]} />
-      <div className="products-heading my-6 text-center md:my-10">
-        <h2 className="text-3xl lg:text-4xl font-extrabold">
+      <div className="products-heading my-4 text-center sm:my-6 md:my-10">
+        <h2 className="text-2xl lg:text-4xl font-extrabold">
           Best-selling Products
         </h2>
-        <p className="font-extralight lg:text-lg lg:mt-2">
+        <p className="text-sm font-extralight lg:text-lg lg:mt-2">
           Speakers of many variations
         </p>
       </div>
-      <div className="flex flex-wrap justify-center mt-6 gap-y-6 min-[480px]:-mx-2 md:gap-y-2">
+      <div className="flex flex-wrap gap-y-4 min-[480px]:-mx-2 md:gap-y-2">
         {products?.map((product) => (
-          <Product key={product._id} product={product} />
+          <Product
+            key={product._id}
+            product={product}
+            className="w-full min-[480px]:px-2 min-[480px]:w-1/2 sm:w-1/3 md:w-1/4 "
+          />
         ))}
       </div>
       <FooterBanner footerBanner={bannerData && bannerData[0]} />

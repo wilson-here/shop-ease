@@ -18,6 +18,7 @@ const Cart = () => {
     totalPrice,
     totalQuantities,
     cartItems,
+    showCart,
     setShowCart,
     toggleCartItemQuantity,
     onRemove,
@@ -38,13 +39,25 @@ const Cart = () => {
   };
   return (
     <div
-      className="fixed w-full bg-[#00000080] right-0 top-0 z-50 h-full "
+      className={`fixed right-0 top-0 ${
+        showCart ? "w-full  h-full" : "w-0 h-0"
+      } `}
       ref={cartRef}
     >
-      <div className="h-full bg-white p-4 max-w-[300px] w-4/5 transition-all duration-1000 ease-in-out ml-auto relative">
+      <div
+        onClick={() => setShowCart(false)}
+        className={`absolute bg-[#00000080] h-full w-full grow ${
+          showCart ? "left-0" : "-left-full"
+        } `}
+      ></div>
+      <div
+        className={`absolute h-full bg-white p-4 max-w-[300px] w-4/5 transition-[right] duration-3000 ease-in-out 2xl:max-w-[400px]  ${
+          showCart ? "right-0" : "-right-full"
+        } ml-auto relative z-50`}
+      >
         <button
           type="button"
-          className="cart-heading"
+          className="cart-heading py-2 text-lg"
           onClick={() => setShowCart(false)}
         >
           <AiOutlineLeft />
@@ -54,16 +67,18 @@ const Cart = () => {
         {cartItems.length < 1 && (
           <div className="empty-cart">
             <AiOutlineShopping size={100} className="m-auto text-gray-400" />
-            <h3 className="text-gray-400">Your shopping bag is empty</h3>
-            <Link href="/" className="absolute bottom-4 inset-x-0">
-              <button
-                type="button"
-                onClick={() => setShowCart(false)}
-                className="p-4 rounded-2xl border-none text-lg uppercase bg-[#f02d34] text-white cursor-pointer lg:transition-transform lg:hover:scale-110 lg:ease-in-out lg:duration-300"
-              >
-                Continue shopping
-              </button>
-            </Link>
+            <h3 className="text-gray-400 text-lg mt-4">
+              Your shopping bag is empty
+            </h3>
+            <button
+              type="button"
+              onClick={() => setShowCart(false)}
+              className={`p-2 rounded-2xl border-none text-lg uppercase bg-[#f02d34] text-white cursor-pointer lg:transition-transform lg:hover:scale-110 lg:ease-in-out lg:duration-300 ${
+                showCart ? "absolute bottom-4 inset-x-0 m-auto w-[80%] " : ""
+              }`}
+            >
+              Continue shopping
+            </button>
           </div>
         )}
 

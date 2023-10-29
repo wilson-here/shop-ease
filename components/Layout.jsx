@@ -16,7 +16,7 @@ const Layout = ({ children }) => {
       </header>
       <main
         id="main"
-        className="main-container mx-auto p-6 w-full mt-16 md:p-10"
+        className="main-container mx-auto p-4 w-full mt-16 sm:p-6"
       >
         {children}
       </main>

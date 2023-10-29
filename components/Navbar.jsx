@@ -5,7 +5,7 @@ import { Cart } from "./";
 import { useStateContext } from "../context/StateContext";
 
 const Navbar = () => {
-  const { showCart, setShowCart, totalQuantities } = useStateContext();
+  const { setShowCart, totalQuantities } = useStateContext();
   return (
     <div className="flex justify-between relative items-center pr-4 shadow-md">
       <p className="logo">
@@ -24,7 +24,7 @@ const Navbar = () => {
         </span>
       </button>
 
-      {showCart && <Cart />}
+      <Cart />
     </div>
   );
 };

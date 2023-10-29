@@ -5,7 +5,7 @@ import { urlFor } from "../lib/client";
 const HeroBanner = ({ heroBanner }) => {
   return (
     <div
-      className="hero-banner-container p-6 flex flex-col flex-col-reverse md:flex-row md:items-center md:justify-between md:p-10 md:relative md:bg-transparent md:min-h-[450px] before:content-[''] before:inset-0 before:w-full before:h-full before:bg-[#ebebeb] before:absolute before:-z-20 before:rounded-2xl"
+      className="hero-banner-container p-4 flex flex-col flex-col-reverse sm:p-6 md:min-h-[350px] md:flex-row md:items-center md:justify-between md:p-6 md:relative md:bg-transparent md:min-h-[450px] md:before:content-[''] md:before:inset-0 md:before:w-full md:before:h-full md:before:bg-[#ebebeb] md:before:absolute md:before:-z-20 md:before:rounded-2xl lg:min-h-[450px] xl:min-h-[550px]"
       style={{ color: "#324d67" }}
     >
       {/* desc */}
@@ -33,9 +33,9 @@ const HeroBanner = ({ heroBanner }) => {
         <img
           src={urlFor(heroBanner.image)}
           alt="headphones"
-          className="object-contain m-auto w-full -top-14 max-w-[300px] md:m-[unset] md:absolute md:-z-10 md:left-[unset] md:right-20 md:-top-2 md:max-w-[450px] lg:md:max-w-[600px] xl:-top-20"
+          className="object-contain m-auto w-full -top-14 max-w-[300px] md:m-[unset] md:absolute md:-z-10 md:left-[unset] md:right-32 md:-top-2 md:max-w-[400px] lg:-top-2 lg:max-w-[500px] lg:right-32 xl:max-w-[700px] xl:right-32 xl:-top-16"
         />
-        <div className="desc">
+        <div className="desc md:max-w-[150px] lg:max-w-[200px]">
           <h5 className="text-sm text-[#324d67] self-end font-bold drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)] md:text-base lg:text-lg xl:text-2xl ">
             Description
           </h5>
