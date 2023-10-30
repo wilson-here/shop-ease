@@ -14,6 +14,7 @@ const FooterBanner = ({
     product,
     buttonText,
     image,
+    slug,
   },
 }) => {
   return (
@@ -36,7 +37,7 @@ const FooterBanner = ({
         <p className="text-sm lg:text-lg">{smallText}</p>
         <h3 className="font-extrabold text-3xl lg:text-4xl">{midText}</h3>
         <p className="text-sm lg:text-lg">{desc}</p>
-        <Link href={`/product/${product}`}>
+        <Link href={`/product/${slug.current}`}>
           <button
             type="button"
             className="text-sm uppercase mt-4 py-2 px-4 rounded-2xl font-medium border-none cursor-pointer lg:transition-transform lg:hover:scale-110 lg:ease-in-out lg:duration-300 bg-white border-none lg:text-lg"

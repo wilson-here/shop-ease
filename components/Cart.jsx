@@ -51,18 +51,18 @@ const Cart = () => {
         } `}
       ></div>
       <div
-        className={`absolute h-full bg-white p-4 max-w-[300px] w-4/5 transition-[right] duration-3000 ease-in-out 2xl:max-w-[400px]  ${
+        className={`absolute h-full bg-white p-4 max-w-[256px] w-4/5 transition-[right] duration-3000 ease-in-out lg:p-6 lg:max-w-[400px] ${
           showCart ? "right-0" : "-right-full"
         } ml-auto relative z-50`}
       >
         <button
           type="button"
-          className="cart-heading py-2 text-lg"
+          className="flex items-center font-medium cursor-pointer gap-1 border-0 bg-transparent py-2 text-lg lg:text-2xl 2xl:text-3xl 2xl:gap-2"
           onClick={() => setShowCart(false)}
         >
           <AiOutlineLeft />
-          <span className="heading">Your Cart</span>
-          <span className="cart-num-items">({totalQuantities} items)</span>
+          <span className="">Your Cart</span>
+          <span className="text-[#f02d34]">({totalQuantities} items)</span>
         </button>
         {cartItems.length < 1 && (
           <div className="empty-cart">
@@ -82,44 +82,62 @@ const Cart = () => {
           </div>
         )}
 
-        <div className="product-container">
+        <div className=" overflow-auto max-h-[60vh] ">
           {cartItems.length >= 1 &&
             cartItems.map((item, index) => (
-              <div className="product" key={item?._id}>
+              <div
+                className="product flex py-4 justify-start gap-4 2xl:gap-6"
+                key={item?._id}
+              >
                 <img
                   src={urlFor(item?.image[0])}
-                  className="cart-product-image"
+                  className="cart-product-image rounded-md w-16 h-16 bg-[#ebebeb] lg:w-24 lg:h-24 2xl:w-28 2xl:h-28"
                 />
-                <div className="item-desc">
-                  <div className="flex top">
-                    <h5>{item?.name}</h5>
-                    <h4>${item?.price}</h4>
+                <div className="flex flex-col justify-between grow">
+                  <div className="flex justify-between items-start text-[#324d67] gap-2">
+                    <h5
+                      className="text-sm font-medium line-clamp-2 lg:text-lg 2xl:text-xl"
+                      style={{ lineHeight: "1.3" }}
+                    >
+                      {item?.name}
+                    </h5>
+                    <h4 className="text-[#f02d34] font-medium text-sm lg:text-lg 2xl:text-xl">
+                      ${item?.price}
+                    </h4>
                   </div>
-                  <div className="flex bottom">
+                  <div className="flex justify-between items-center">
                     <div>
-                      <p className="quantity-desc">
+                      <p className="border-solid border-[#808080] border flex  divide-x divide-[#808080] items-stretch">
                         <span
-                          className="minus"
+                          className="w-6 h-6 lg:w-8 lg:h-8  2xl:w-10 2xl:h-10 justify-center text-sm flex items-center cursor-pointer"
                           onClick={() =>
                             toggleCartItemQuantity(item._id, "dec")
                           }
                         >
-                          <AiOutlineMinus />
+                          <AiOutlineMinus
+                            className="lg:text-lg 2xl:text-2xl"
+                            color="#f02d34"
+                          />
                         </span>
-                        <span className="num">{item.quantity}</span>
+                        <span className="w-6 h-6 lg:w-8 lg:h-8  2xl:w-10 2xl:h-10 lg:text-lg justify-center text-sm flex items-center select-none 2xl:text-xl">
+                          {item.quantity}
+                        </span>
                         <span
-                          className="plus"
+                          className="w-6 h-6 lg:w-8 lg:h-8  2xl:w-10 2xl:h-10 justify-center text-sm flex items-center cursor-pointer"
                           onClick={() =>
                             toggleCartItemQuantity(item._id, "inc")
                           }
                         >
-                          <AiOutlinePlus />
+                          <AiOutlinePlus
+                            className="lg:text-lg 2xl:text-2xl"
+                            color="#31a831"
+                          />
                         </span>
                       </p>
                     </div>
                     <button
                       type="button"
-                      className="remove-item"
+                      className="text-2xl lg:text-4xl text-[#f02d34] cursor-pointer bg-transparent border-0 2xl:text-5xl"
                       onClick={() => onRemove(item._id)}
                     >
                       <TiDeleteOutline />
@@ -130,13 +148,19 @@ const Cart = () => {
             ))}
         </div>
         {cartItems.length >= 1 && (
-          <div className="cart-bottom">
-            <div className="total">
+          <div className="absolute bottom-4 inset-x-0 mx-auto w-full px-4 lg:px-6 lg:bottom-6">
+            <div className="flex justify-between text-lg font-medium text-black lg:text-2xl 2xl:text-3xl">
               <h3>Subtotal: </h3>
-              <h3>${totalPrice}</h3>
+              <h3 className="text-[#f02d34] font-bold">
+                ${parseFloat(totalPrice.toFixed(2))}
+              </h3>
             </div>
-            <div className="btn-container">
-              <button type="button" className="btn" onClick={handleCheckout}>
+            <div className="">
+              <button
+                type="button"
+                className="font-medium rounded-2xl text-lg bg-[#f02d34] border-0 text-white w-full mt-4 p-2 select-none cursor-pointer lg:transition-transform lg:hover:scale-110 lg:ease-in-out lg:duration-300 lg:text-2xl lg:p-3 2xl:text-3xl 2xl:p-4 2xl:mt-6"
+                onClick={handleCheckout}
+              >
                 Pay with Stripe
               </button>
             </div>

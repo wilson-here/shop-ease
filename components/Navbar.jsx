@@ -10,16 +10,16 @@ const Navbar = () => {
     <div className="flex justify-between relative items-center pr-4 shadow-md">
       <p className="logo">
         <Link href="/" className="">
-          <img src="../logo.png" className="w-48 p-4" />
+          <img src="../logo.png" className="w-48 p-4 2xl:w-56" />
         </Link>
       </p>
       <button
         type="button"
-        className="cart-icon relative"
+        className="relative text-4xl text-[#808080] cursor-pointer border-0 bg-transparent md:transition-transform md:duration-300 md:ease-in-out md:hover:scale-110 xl:text-5xl"
         onClick={() => setShowCart(true)}
       >
         <AiOutlineShopping />
-        <span className="cart-item-qty absolute right-0 -top-1 flex items-center justify-center">
+        <span className="absolute -right-1 -top-1 flex items-center justify-center text-sm text-[#eee] bg-[#f02d34] w-6 h-6 rounded-full text-center font-semibold xl:w-7 xl:h-7 xl:text-base">
           <span className="inline-block">{totalQuantities}</span>
         </span>
       </button>

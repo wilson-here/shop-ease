@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
   AiOutlineMinus,
   AiOutlinePlus,
@@ -15,52 +15,46 @@ import Slider from "react-slick";
 const ProductDetails = ({ product, products }) => {
   const { image, name, details, price, _id } = product;
   const [index, setIndex] = useState(0); // track image đang được hover lên
-  const { decQty, incQty, qty, setQty, onAdd, setShowCart } = useStateContext();
+  const { decQty, incQty, qty, setQty, onAdd, setShowCart, cartItems } =
+    useStateContext();
 
+  console.log("cartItems", cartItems);
+  console.log("product", product);
   var settingsSm = {
-    infinite: false,
-    variableWidth: true,
+    slidesToShow: 4,
     slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    pauseOnHover: true,
+    initialSlide: 0,
+    dots: true,
+    infinite: false,
+    arrows: false,
   };
 
   var settings = {
-    speed: 500,
-    slidesToShow: 5,
+    slidesToShow: 4,
     slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
     initialSlide: 0,
+    autoplay: true,
     responsive: [
       {
-        breakpoint: 375,
+        breakpoint: 768,
         settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
+          slidesToShow: 3,
+
+          arrows: false,
         },
       },
       {
         breakpoint: 640,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
           arrows: false,
+          slidesToShow: 2,
         },
       },
       {
-        breakpoint: 1024,
+        breakpoint: 320,
         settings: {
-          slidesToShow: 4,
-          slidesToScroll: 1,
+          arrows: false,
+          slidesToShow: 1,
         },
       },
     ],
@@ -73,85 +67,135 @@ const ProductDetails = ({ product, products }) => {
   }, [_id]);
 
   const handleBuyNow = () => {
-    onAdd(product, qty);
     setShowCart(true);
+    if (!cartItems.find((item) => item._id === product._id))
+      onAdd(product, qty);
   };
 
   return (
     <div>
-      <div className="product-detail-container">
-        <div className="">
+      <div className="flex flex-col gap-4 sm:gap-6 sm:flex-row lg:gap-8">
+        <div className="sm:w-1/3">
           <div className="image-container">
             {image[index] && (
               <img
                 src={urlFor(image[index])}
-                className="product-detail-image object-cover bg-[#ebebeb] rounded-lg cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#f02d34] w-full"
+                className="object-cover bg-[#ebebeb] rounded-lg cursor-pointer transition-all duration-300 ease-in-out w-full aspect-square"
               />
             )}
           </div>
-          <Slider className="slider-small -mx-1" {...settingsSm}>
+          <Slider
+            className="slider-small -mx-1 mt-2 lg:mt-4 lg:-mx-2"
+            {...settingsSm}
+          >
             {image?.map((item, i) => (
-              <div>
+              <div className="outline-none">
                 <img
                   key={i}
                   src={urlFor(item)}
                   onMouseEnter={() => {
                     setIndex(i);
                   }}
-                  className={
+                  className={`small-image aspect-square rounded-md bg-[#ebebeb] cursor-pointer ${
                     i === index // nếu image của hình trong vòng loop = index của image đang được hover -> active image đó
-                      ? "small-image selected-image"
-                      : "small-image"
+                      ? "bg-[#f02d34]"
+                      : ""
                   }
+                  `}
                 />
               </div>
             ))}
           </Slider>
         </div>
-        <div className="product-detail-desc">
-          <h1>{name}</h1>
-          <div className="reviews">
-            <div>
+        <div className="sm:w-2/3 sm:flex sm:flex-col ">
+          <h1
+            className="font-bold text-xl text-[#324d67] lg:text-3xl 2xl:text-4xl"
+            style={{ lineHeight: "1.5" }}
+          >
+            {name}
+          </h1>
+          <div className="text-[#f02d34] flex items-center mt-2 lg:text-xl lg:mt-4 xl:text-3xl">
+            <div className="flex">
               <AiFillStar />
               <AiFillStar />
               <AiFillStar />
               <AiFillStar />
               <AiOutlineStar />
             </div>
-            <p>(20)</p>
+            <p className="ml-1 text-black font-medium">(20)</p>
           </div>
-          <h4>Details: </h4>
-          <p>{details}</p>
-          <p className="price">${price}</p>
-          <div className="quantity">
-            <h3>Quantity:</h3>
-            <p className="quantity-desc">
-              <span className="minus" onClick={decQty}>
-                <AiOutlineMinus />
-              </span>
-              <span className="num">{qty}</span>
-              <span className="plus" onClick={incQty}>
-                <AiOutlinePlus />
-              </span>
-            </p>
-          </div>
-          <div className="buttons">
-            <button
-              type="button"
-              className="add-to-cart"
-              onClick={() => onAdd(product, qty)}
-            >
-              Add to Cart
-            </button>
-            <button type="button" className="buy-now" onClick={handleBuyNow}>
-              Buy Now
-            </button>
+          <h4
+            className="text-base text-black font-medium mt-2 lg:text-xl lg:mt-4 2xl:text-2xl"
+            style={{ lineHeight: "1.5" }}
+          >
+            Details:{" "}
+          </h4>
+          <p
+            className="text-base font-normal text-black lg:text-xl 2xl:text-2xl"
+            style={{ lineHeight: "1.5" }}
+          >
+            {details}
+          </p>
+          <p
+            className="price font-bold text-2xl text-[#f02d34] mt-2 sm:mt-4 lg:text-4xl 2xl:text-5xl"
+            style={{ lineHeight: "1.5" }}
+          >
+            ${price}
+          </p>
+          <div className="sm:flex sm:flex-col sm:grow sm:justify-end">
+            <div className="flex gap-2 items-center mt-2 sm:mt-4 lg:gap-4">
+              <h3 className="font-medium lg:text-xl 2xl:text-2xl">Quantity:</h3>
+              <div className="border-solid border-[#808080] border flex  divide-x divide-[#808080] items-stretch">
+                <div
+                  className="w-10 h-10 lg:w-12 lg:h-12 2xl:w-14 2xl:h-14 justify-center text-base flex items-center cursor-pointer"
+                  onClick={decQty}
+                >
+                  <AiOutlineMinus
+                    className="lg:text-xl 2xl:text-2xl"
+                    color="#f02d34"
+                  />
+                </div>
+                <div className="w-10 h-10 lg:w-12 lg:h-12 2xl:w-14 2xl:h-14 justify-center text-base flex items-center select-none lg:text-xl 2xl:text-2xl">
+                  {qty}
+                </div>
+                <div
+                  className="w-10 h-10 lg:w-12 lg:h-12 2xl:w-14 2xl:h-14 justify-center text-base flex items-center cursor-pointer plus"
+                  onClick={incQty}
+                >
+                  <AiOutlinePlus
+                    className="lg:text-xl 2xl:text-2xl"
+                    color="#31a831"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="buttons flex gap-4 mt-4 lg:gap-8 lg:mt-6 2xl:mt-8">
+              <button
+                type="button"
+                className="rounded-2xl font-medium text-lg add-to-cart w-1/2 p-2 select-none cursor-pointer lg:transition-transform lg:hover:scale-110 lg:ease-in-out lg:duration-300 lg:text-2xl lg:p-3 2xl:text-3xl 2xl:p-4"
+                onClick={() => onAdd(product, qty)}
+              >
+                Add to Cart
+              </button>
+              <button
+                type="button"
+                className="rounded-2xl font-medium text-lg bg-[#f02d34] border-0 text-white w-1/2 p-2 select-none cursor-pointer lg:transition-transform lg:hover:scale-110 lg:ease-in-out lg:duration-300 lg:text-2xl lg:p-3 2xl:text-3xl 2xl:p-4"
+                onClick={handleBuyNow}
+              >
+                Buy Now
+              </button>
+            </div>
           </div>
         </div>
       </div>
-      <div className="maylike-products-wrapper">
-        <h2>You may also like</h2>
-        <Slider className="-mx-2" {...settings}>
+      <div className="text-[#324d67]">
+        <h2 className="text-center text-2xl mt-4 font-semibold sm:mt-6 sm:mb-4 md:mb-4 lg:text-3xl 2xl:text-4xl">
+          You may also like
+        </h2>
+        <Slider
+          className="slider-recommend -mx-2  items-center md:gap-2"
+          {...settings}
+        >
           {products.map((item) => (
             <Product key={item._id} product={item} />
           ))}
@@ -161,6 +205,7 @@ const ProductDetails = ({ product, products }) => {
   );
 };
 
+// getStatidPaths tell browsers to render [slug].js to render page product detail before data is loaded from getStaticProps below
 export const getStaticPaths = async () => {
   const query = `*[_type == 'product'] {
         slug {
@@ -182,7 +227,7 @@ export const getStaticPaths = async () => {
 // next js auto detect the slug we're on a specific product page and return the slug param below to pass in the getStaticsProps function
 export const getStaticProps = async ({ params: { slug } }) => {
   const query = `*[_type == "product" && slug.current == '${slug}'][0]`;
-  const productsQuery = `*[_type == "product"]`;
+  const productsQuery = `*[_type == "product" && slug.current !='${slug}']`;
 
   const product = await client.fetch(query);
   const products = await client.fetch(productsQuery);

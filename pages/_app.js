@@ -13,7 +13,12 @@ function MyApp({ Component, pageProps }) {
   return (
     <StateContext>
       <Layout>
-        <Toaster />
+        <Toaster
+          toastOptions={{
+            duration: 1000,
+            className: "custom-toast",
+          }}
+        />
         <Component {...pageProps} />
       </Layout>
     </StateContext>
