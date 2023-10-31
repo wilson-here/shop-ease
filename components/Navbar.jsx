@@ -19,7 +19,7 @@ const Navbar = () => {
         onClick={() => setShowCart(true)}
       >
         <AiOutlineShopping />
-        <span className="absolute -right-1 -top-1 flex items-center justify-center text-sm text-[#eee] bg-[#f02d34] w-5 h-5 rounded-full text-center font-semibold ">
+        <span className="absolute -right-1 -top-1 flex items-center justify-center text-xs text-[#eee] bg-[#f02d34] w-5 h-5 rounded-full text-center font-semibold ">
           <span className="inline-block">{totalQuantities}</span>
         </span>
       </button>
