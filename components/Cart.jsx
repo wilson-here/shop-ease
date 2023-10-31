@@ -51,7 +51,7 @@ const Cart = () => {
         } `}
       ></div>
       <div
-        className={`absolute h-full bg-white p-4 max-w-[256px] w-4/5 transition-[right] duration-3000 ease-in-out lg:p-6 lg:max-w-[400px] ${
+        className={`absolute h-full bg-white p-4 max-w-[300px] w-4/5 transition-[right] duration-3000 ease-in-out lg:p-6 lg:max-w-[350px] 2xl:max-w-[400px] ${
           showCart ? "right-0" : "-right-full"
         } ml-auto relative z-50`}
       >
@@ -74,7 +74,9 @@ const Cart = () => {
               type="button"
               onClick={() => setShowCart(false)}
               className={`p-2 rounded-2xl border-none text-lg uppercase bg-[#f02d34] text-white cursor-pointer lg:transition-transform lg:hover:scale-110 lg:ease-in-out lg:duration-300 ${
-                showCart ? "absolute bottom-4 inset-x-0 m-auto w-[80%] " : ""
+                showCart
+                  ? "absolute bottom-4 lg:bottom-6 inset-x-0 m-auto w-[80%] "
+                  : ""
               }`}
             >
               Continue shopping
@@ -86,7 +88,7 @@ const Cart = () => {
           {cartItems.length >= 1 &&
             cartItems.map((item, index) => (
               <div
-                className="product flex py-4 justify-start gap-4 2xl:gap-6"
+                className="product flex py-2 justify-start gap-2 2xl:gap-4 2xl:py-4"
                 key={item?._id}
               >
                 <img
@@ -96,8 +98,8 @@ const Cart = () => {
                 <div className="flex flex-col justify-between grow">
                   <div className="flex justify-between items-start text-[#324d67] gap-2">
                     <h5
-                      className="text-sm font-medium line-clamp-2 lg:text-lg 2xl:text-xl"
-                      style={{ lineHeight: "1.3" }}
+                      className="text-xs font-medium line-clamp-2 lg:text-lg 2xl:text-xl"
+                      style={{ lineHeight: "1.1" }}
                     >
                       {item?.name}
                     </h5>

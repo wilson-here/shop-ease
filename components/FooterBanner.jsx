@@ -19,14 +19,14 @@ const FooterBanner = ({
 }) => {
   return (
     <div
-      className="banner-desc bg-[#f02d34] p-4 rounded-2xl relative text-white mt-4 flex flex-col gap-2 w-full min-[480px]:mt-6 min-[480px]:p-6 md:min-h-[250px]  md:flex-row md:justify-between md:items-center
-    md:bg-transparent lg:min-h-[350px] xl:mt-20 before:content-[''] before:inset-0 before:w-full before:h-full before:bg-[#f02d34] before:absolute before:-z-20 before:rounded-2xl "
+      className="banner-desc bg-[#f02d34] p-4 rounded-2xl relative text-white my-10 flex flex-col gap-2 w-full min-[480px]:p-6 md:min-h-[250px] md:my-28 md:flex-row md:justify-between md:items-center
+    md:bg-transparent lg:min-h-[350px] before:content-[''] before:inset-0 before:w-full before:h-full before:bg-[#f02d34] before:absolute before:-z-20 before:rounded-2xl "
     >
       <div className="self-start md:self-center">
-        <p className="font-bold text-sm md:text-base lg:text-lg">{discount}</p>
+        <p className="font-bold text-lg md:text-xl lg:text-lg">{discount}</p>
         <h3 className="font-extrabold text-3xl lg:text-5xl">{largeText1}</h3>
         <h3 className="font-extrabold text-3xl lg:text-5xl">{largeText2}</h3>
-        <p className="text-sm md:text-base lg:text-lg">{saleTime}</p>
+        <p className="text-sm lg:text-lg">{saleTime}</p>
       </div>
       <img
         src={urlFor(image)}

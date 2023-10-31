@@ -125,7 +125,7 @@ const ProductDetails = ({ product, products }) => {
             <p className="ml-1 text-black font-medium">(20)</p>
           </div>
           <h4
-            className="text-base text-black font-medium mt-2 lg:text-xl lg:mt-4 2xl:text-2xl"
+            className="text-base text-black font-medium mt-8 lg:text-xl lg:mt-12 2xl:text-2xl"
             style={{ lineHeight: "1.5" }}
           >
             Details:{" "}
@@ -137,7 +137,7 @@ const ProductDetails = ({ product, products }) => {
             {details}
           </p>
           <p
-            className="price font-bold text-2xl text-[#f02d34] mt-2 sm:mt-4 lg:text-4xl 2xl:text-5xl"
+            className="price font-bold text-2xl text-[#f02d34] mt-8 lg:text-4xl lg:mt-12 2xl:text-5xl"
             style={{ lineHeight: "1.5" }}
           >
             ${price}
@@ -169,7 +169,7 @@ const ProductDetails = ({ product, products }) => {
                 </div>
               </div>
             </div>
-            <div className="buttons flex gap-4 mt-4 lg:gap-8 lg:mt-6 2xl:mt-8">
+            <div className="buttons flex gap-4 mt-8 lg:gap-8 lg:mt-12 ">
               <button
                 type="button"
                 className="rounded-2xl font-medium text-lg add-to-cart w-1/2 p-2 select-none cursor-pointer lg:transition-transform lg:hover:scale-110 lg:ease-in-out lg:duration-300 lg:text-2xl lg:p-3 2xl:text-3xl 2xl:p-4"
@@ -189,11 +189,11 @@ const ProductDetails = ({ product, products }) => {
         </div>
       </div>
       <div className="text-[#324d67]">
-        <h2 className="text-center text-2xl mt-4 font-semibold sm:mt-6 sm:mb-4 md:mb-4 lg:text-3xl 2xl:text-4xl">
+        <h2 className="text-center text-xl my-10 uppercase font-semibold  lg:text-3xl 2xl:text-4xl">
           You may also like
         </h2>
         <Slider
-          className="slider-recommend -mx-2  items-center md:gap-2"
+          className="slider-recommend -mx-2 my-10 items-center md:gap-2"
           {...settings}
         >
           {products.map((item) => (

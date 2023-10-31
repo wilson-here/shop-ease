@@ -35,11 +35,11 @@ const HeroBanner = ({ heroBanner }) => {
           alt="headphones"
           className="object-contain m-auto w-full -top-14 max-w-[300px] md:m-[unset] md:absolute md:-z-10 md:left-[unset] md:right-32 md:-top-2 md:max-w-[400px] lg:-top-2 lg:max-w-[500px] lg:right-32 xl:max-w-[700px] xl:right-32 xl:-top-16"
         />
-        <div className="desc md:max-w-[150px] lg:max-w-[200px]">
+        <div className="flex flex-col text-end font-thin">
           <h5 className="text-sm text-[#324d67] self-end font-bold drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)] md:text-base lg:text-lg xl:text-2xl ">
             Description
           </h5>
-          <p className="text-sm md:text-base md:drop-shadow-2xl lg:text-lg xl:text-xl">
+          <p className="text-sm text-[#5f5f5f]  md:text-base lg:text-lg xl:text-xl">
             {heroBanner.desc}
           </p>
         </div>

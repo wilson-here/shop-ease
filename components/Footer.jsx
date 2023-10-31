@@ -9,11 +9,11 @@ const Footer = () => {
         © 2023 Shop Ease. All Rights Reserved.
       </p>
       <p className="flex">
-        <Link href="#" className="p-2">
-          <AiFillInstagram className="text-4xl lg:text-5xl lg:transition-transform lg:hover:scale-110 lg:ease-in-out lg:duration-300 2xl:text-6xl" />
+        <Link href="#" className="p-1">
+          <AiFillInstagram className="text-3xl lg:text-4xl lg:transition-transform lg:hover:scale-110 lg:ease-in-out lg:duration-300 2xl:text-6xl" />
         </Link>
-        <Link href="#" className="p-2">
-          <AiOutlineTwitter className="text-4xl lg:text-5xl lg:transition-transform lg:hover:scale-110 lg:ease-in-out lg:duration-300 2xl:text-6xl" />
+        <Link href="#" className="p-1">
+          <AiOutlineTwitter className="text-3xl lg:text-4xl lg:transition-transform lg:hover:scale-110 lg:ease-in-out lg:duration-300 2xl:text-6xl" />
         </Link>
       </p>
     </div>
