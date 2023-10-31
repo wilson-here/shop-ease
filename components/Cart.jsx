@@ -103,7 +103,7 @@ const Cart = () => {
                     >
                       {item?.name}
                     </h5>
-                    <h4 className="text-[#f02d34] font-medium text-sm lg:text-lg 2xl:text-xl">
+                    <h4 className="text-[#f02d34] font-medium text-xs lg:text-lg 2xl:text-xl">
                       ${item?.price}
                     </h4>
                   </div>
