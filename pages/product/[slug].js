@@ -18,8 +18,6 @@ const ProductDetails = ({ product, products }) => {
   const { decQty, incQty, qty, setQty, onAdd, setShowCart, cartItems } =
     useStateContext();
 
-  console.log("cartItems", cartItems);
-  console.log("product", product);
   var settingsSm = {
     slidesToShow: 4,
     slidesToScroll: 1,
