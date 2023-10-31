@@ -18,9 +18,9 @@ const Layout = ({ children }) => {
         <Navbar />
       </header>
       <main
-        className={`main-container mx-auto p-4 w-full mt-16 sm:p-6 ${
+        className={`main-container mx-auto p-4 w-full mt-16 min-h-[calc(100vh-66px-66px)] lg:min-h-[calc(100vh-66px-84px)]  sm:p-6 ${
           router.pathname === "/success"
-            ? "min-h-[calc(100vh-66px-66px)] lg:min-h-[calc(100vh-66px-84px)] flex justify-center items-center"
+            ? "flex justify-center items-center"
             : ""
         }`}
       >
