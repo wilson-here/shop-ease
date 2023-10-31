@@ -172,7 +172,7 @@ const ProductDetails = ({ product, products }) => {
             <div className="buttons flex gap-4 mt-8 lg:gap-8 lg:mt-12 ">
               <button
                 type="button"
-                className="rounded-2xl font-medium text-lg add-to-cart w-1/2 p-2 select-none cursor-pointer lg:transition-transform lg:hover:scale-110 lg:ease-in-out lg:duration-300 lg:text-2xl lg:p-3 2xl:text-3xl 2xl:p-4"
+                className="rounded-2xl font-medium text-lg bg-white text-[#f02d34] border border-solid border-[#f02d34] w-1/2 p-2 select-none cursor-pointer lg:transition-transform lg:hover:scale-110 lg:ease-in-out lg:duration-300 lg:text-2xl lg:p-3 2xl:text-3xl 2xl:p-4"
                 onClick={() => onAdd(product, qty)}
               >
                 Add to Cart

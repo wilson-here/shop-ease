@@ -40,7 +40,7 @@ const FooterBanner = ({
         <Link href={`/product/${slug.current}`}>
           <button
             type="button"
-            className="text-sm uppercase mt-4 py-2 px-4 rounded-2xl font-medium border-none cursor-pointer lg:transition-transform lg:hover:scale-110 lg:ease-in-out lg:duration-300 bg-white border-none lg:text-lg"
+            className="text-[#f02d34] text-sm uppercase mt-4 py-2 px-4 rounded-2xl font-medium border-none cursor-pointer lg:transition-transform lg:hover:scale-110 lg:ease-in-out lg:duration-300 bg-white border-none lg:text-lg"
           >
             {buttonText}
           </button>

@@ -5,7 +5,7 @@ import { urlFor } from "../lib/client";
 const HeroBanner = ({ heroBanner }) => {
   return (
     <div
-      className="hero-banner-container p-4 flex flex-col flex-col-reverse sm:p-6 md:min-h-[350px] md:flex-row md:items-center md:justify-between md:p-6 md:relative md:bg-transparent md:min-h-[450px] md:before:content-[''] md:before:inset-0 md:before:w-full md:before:h-full md:before:bg-[#ebebeb] md:before:absolute md:before:-z-20 md:before:rounded-2xl lg:min-h-[450px] xl:min-h-[550px]"
+      className=" bg-[#dcdcdc] p-4 flex flex-col flex-col-reverse sm:p-6 md:min-h-[350px] md:flex-row md:items-center md:justify-between md:p-10 md:relative md:bg-transparent md:min-h-[450px] md:before:content-[''] md:before:inset-0 md:before:w-full md:before:h-full md:before:bg-[#ebebeb] md:before:absolute md:before:-z-20 md:before:rounded-2xl lg:min-h-[450px] xl:min-h-[550px]"
       style={{ color: "#324d67" }}
     >
       {/* desc */}
@@ -22,7 +22,7 @@ const HeroBanner = ({ heroBanner }) => {
         <Link href={`/product/${heroBanner.slug.current}`}>
           <button
             type="button"
-            className="mt-4 py-2 px-4 rounded-2xl font-medium border-none cursor-pointer text-white uppercase text-sm  lg:transition-transform lg:hover:scale-110 lg:ease-in-out lg:duration-300 md:text-base lg:text-lg"
+            className=" bg-[#f02d34] mt-4 py-2 px-4 rounded-2xl font-medium border-none cursor-pointer text-white uppercase text-sm md:mt-10 lg:transition-transform lg:hover:scale-110 lg:ease-in-out lg:duration-300 md:text-base lg:text-lg"
           >
             {heroBanner.buttonText}
           </button>

@@ -57,7 +57,7 @@ const Cart = () => {
       >
         <button
           type="button"
-          className="flex items-center font-medium cursor-pointer gap-1 border-0 bg-transparent py-2 text-lg lg:text-2xl 2xl:text-3xl 2xl:gap-2"
+          className="flex items-center font-medium cursor-pointer gap-1 border-0 bg-transparent py-2 text-lg 2xl:gap-2"
           onClick={() => setShowCart(false)}
         >
           <AiOutlineLeft />
@@ -65,9 +65,9 @@ const Cart = () => {
           <span className="text-[#f02d34]">({totalQuantities} items)</span>
         </button>
         {cartItems.length < 1 && (
-          <div className="empty-cart">
+          <div className="empty-cart m-10 text-center">
             <AiOutlineShopping size={100} className="m-auto text-gray-400" />
-            <h3 className="text-gray-400 text-lg mt-4">
+            <h3 className="text-gray-400 text-lg mt-4 font-medium">
               Your shopping bag is empty
             </h3>
             <button

@@ -8,7 +8,7 @@ const Home = ({ products, bannerData }) => {
   return (
     <div>
       <HeroBanner heroBanner={bannerData.length && bannerData[0]} />
-      <div className="products-heading my-10 text-center md:my-16 ">
+      <div className="text-[#324d67] my-10 text-center md:my-16 ">
         <h2 className="text-2xl lg:text-4xl font-extrabold uppercase ">
           New Arrivals
         </h2>
