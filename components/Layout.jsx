@@ -13,22 +13,28 @@ const Layout = ({ children }) => {
         {" "}
         <title>SHOP EASE | shopping made easy!</title>
         <link rel="icon" href="/favicon.png" />
+        <meta
+          name="viewport"
+          content="initial-scale=1, viewport-fit=cover, user-scalable=no"
+        />
       </Head>
-      <header id="header" className="fixed top-0 z-10 w-full bg-white">
-        <Navbar />
-      </header>
-      <main
-        className={`main-container mx-auto p-4 w-full mt-16 min-h-[calc(100vh-66px-66px)] lg:min-h-[calc(100vh-66px-84px)]  sm:p-6 ${
-          router.pathname === "/success"
-            ? "flex justify-center items-center"
-            : ""
-        }`}
-      >
-        {children}
-      </main>
-      <footer>
-        <Footer />
-      </footer>
+      <div style={{ WebkitTapHighlightColor: "transparent" }}>
+        <header id="header" className="fixed top-0 z-10 w-full bg-white">
+          <Navbar />
+        </header>
+        <main
+          className={`main-container mx-auto p-4 w-full mt-16 min-h-[calc(100vh-66px-66px)] lg:min-h-[calc(100vh-66px-84px)]  sm:p-6 ${
+            router.pathname === "/success"
+              ? "flex justify-center items-center"
+              : ""
+          }`}
+        >
+          {children}
+        </main>
+        <footer>
+          <Footer />
+        </footer>
+      </div>
     </div>
   );
 };
