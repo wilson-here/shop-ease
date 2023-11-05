@@ -10,13 +10,19 @@ const Layout = ({ children }) => {
   return (
     <div className="layout">
       <Head>
-        {" "}
         <title>SHOP EASE | shopping made easy!</title>
         <link rel="icon" href="/favicon.png" />
+        {/* make pwa */}
+        <meta
+          name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent"
+        />
         <meta
           name="viewport"
           content="initial-scale=1, viewport-fit=cover, user-scalable=no"
         />
+        <link rel="manifest" href="/site.webmanifest" />
+        {/* make pwa */}
       </Head>
       <div style={{ WebkitTapHighlightColor: "transparent" }}>
         <header id="header" className="fixed top-0 z-10 w-full bg-white">
